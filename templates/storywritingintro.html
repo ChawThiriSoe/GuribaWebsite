@@ -1,0 +1,68 @@
+{% extends 'usernavigation.html' %}
+{% block title %}
+Creating a story
+{% endblock %}
+{% block content %}
+<!-- Modified template from https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/ -->
+	<form action="/introwriting" method="post" enctype="multipart/form-data">
+		<div class="row">
+			<div class="col-md-3" style="padding: 35px;">
+				<div class="content">
+					<div class="box">
+						<input type="file" name="coverimg" id="file-6" class="inputfile inputfile-5" data-multiple-caption="{count} files selected" multiple required >
+						<label for="file-6"><figure></figure> Add Cover<br>Image</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+			<div class="col-md-7" style="padding-top: 35px;">
+				{% if msg %}
+					<div class="form-group">
+						<span style="color: #D91848; font-size: 12px;">{{msg}}</span>
+					</div>
+				{% endif %}
+				<font class="storyintro">
+					Story's Title:
+				</font>
+				<br>
+				<input type="hidden" name="userid" value="{{session['userID']}}">
+				<input type="text" name="title" class="fbinput" value="" placeholder="Title of story">
+				<br><br>
+				<font class="storyintro">
+					Story's Description:
+				</font>
+				<br>
+				<textarea name="intro" rows="3" class="fbinput" placeholder="Briefly introduction of story" id="autoresizing"></textarea>
+				<br><br>
+				<font class="storyintro">
+					Story's Tag:
+				</font>
+				<br>
+				<input type="text" name="tag" class="fbinput" value="" placeholder="Tag of story">
+				<br><br>
+				<font class="storyintro">
+					Story's Genre:
+				</font>
+				<br>
+				<select class="fbinput" name="genre">
+					<option value="no genre">Type of genre</option>
+					{% for genre in genredata %}
+					<option value="{{genre[0]}}">{{genre[1]}}</option>
+					{% endfor %}
+				</select>
+				<br><br>
+				<input type="submit" value="Create" class="btn nextbtn">
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</form>
+<script type="text/javascript"> 
+	textarea = document.querySelector("#autoresizing"); 
+	textarea.addEventListener('input', autoResize, false); 
+
+	function autoResize() { 
+		this.style.height = 'auto'; 
+		this.style.height = this.scrollHeight + 'px'; 
+	} 
+</script>
+{% endblock %}

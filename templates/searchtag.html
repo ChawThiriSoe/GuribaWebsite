@@ -1,0 +1,78 @@
+{% extends 'usernavigation.html' %}
+{% block title %}
+Searching Result
+{% endblock %}
+{% block content %}
+	<div class="row" style="padding: 20px;">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<font style="font-size: 25px; color: #D91848;">
+				Search For {{genrename}}
+			</font>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="row storylist">
+				<div class="col-md-12">
+					<div class="row" style="padding-bottom: 30px;">
+						<div class="col-md-2"></div>
+						<div class="col-md-10">
+							<font style="font-size: 15px; color: #6E6565;">
+								{{totalstory}} Stories found
+							</font>
+						</div>
+					</div>
+					{% if storydata %}
+					{% for story in storydata %}
+					<div class="row" style="padding-bottom: 30px;">
+						<div class="col-md-3">
+							<img src="{{story.storyimg}}" width="100%" height="80%" class="listimg">
+						</div>
+						<div class="col-md-1"></div>
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-12">
+									<form action="/storypreview" method="post">
+										<input type="hidden" name="storyid" value="{{story.storyID}}">
+										<button class="likebutton" style="font-size: 25px; color: #D91848; background-color: white;">{{story.storytitle}}</button>
+									</form>
+								</div>
+							</div>
+							<div class="row" style="padding-top: 20px;">
+								<div class="col-md-12">
+									<font style="font-size: 15px;">
+										Finished Chapters - {{story.totalchapter}}
+									</font>
+								</div>
+							</div>
+							<div class="row" style="padding-top: 20px;">
+								<div class="col-md-12">
+									<font style="font-size: 15px;">
+										Genres - {{story.genretype}}
+									</font>
+								</div>
+							</div>
+							<div class="row" style="padding-top: 20px;">
+								<div class="col-md-12">
+									<p style="font-size: 15px;">
+										{{story.storyintro}}
+									</p>
+								</div>
+							</div>
+							<div class="row" style="padding-top: 30px;">
+								<div class="col-md-12">
+									<font class="tags">{{story.tagtype}}</font>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+{% endblock %}

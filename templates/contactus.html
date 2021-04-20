@@ -1,0 +1,103 @@
+{% extends 'usernavigation.html' %}
+{% block title %}
+Contact Guriba
+{% endblock %}
+		{% block content %}
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-10">
+							<font style="font-size: 30px; font-weight: 600; color: #D91848;">
+								Contact Us
+							</font>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+					<div class="row">
+						<div class="col-md-10">
+							<p class="termp">
+								From this form, you can send us the feedback, reviews, ask questions, or report about bug, content or other problems. We will do something effectively to respond you.
+							</p>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+					<div class="row">
+						<div class="col-md-10">
+							<div class="storylist">    
+								<form action="/contactus" method="post">
+									<div class="form-group">
+										{% if msg %}
+									        <div class="form-group">
+									            <span style="color: #D91848; font-size: 12px;">{{msg}}</span>
+									        </div>
+										{% endif %}
+							            <div class="row">
+											<div class="col-md-4">
+												<br>
+												<font class="fbfont">
+													Your Email Address:
+												</font>
+											</div>
+											<div class="col-md-7">
+												<input type="email" name="rpemail" class="fbinput" value="{{email}}">
+											</div>
+											<div class="col-md-1"></div>
+										</div>
+							            <div class="row">
+							            	<div class="col-md-4">
+							            		<br>
+							            		<font class="fbfont">
+							            			Select Topic:
+												</font>
+							            	</div>
+							            	<div class="col-md-7">
+							            		<select class="fbinput" name="rptopic">
+							            			<option value="Giving Feedback">Giving Feedback</option>
+							            			<option value="Reviewing Website">Reviewing Website</option>
+							            			<option value="Asking Question">Asking Question</option>
+							            			<option value="Report A Bug">Report A Bug</option>
+							            			<option value="Report Content">Report Content</option>
+							            			<option value="Report User Account">Report User Account</option>
+							            			<option value="Others">Others</option>
+							            		</select>
+							            	</div>
+							            	<div class="col-md-1"></div>
+							            </div>
+							            <div class="row">
+							            	<div class="col-md-4">
+							            		<br>
+							            		<font class="fbfont">
+													Message
+												</font>
+							            	</div>
+							            	<div class="col-md-7">
+							            		<textarea name="rpmsg" rows="3" class="fbinput"></textarea>
+							            	</div>
+							            	<div class="col-md-1"></div>
+							            </div>
+							            <div class="row">
+							            	<div class="col-md-4"></div>
+							            	<div class="col-md-7">
+							            		<input type="submit" value="Send" class="fbsubmit">
+							            	</div>
+							            	<div class="col-md-1"></div>
+							            </div>
+							        </div>
+							    </form>
+							</div>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+					<div class="row" style="padding-top: 30px;">
+						<div class="col-md-12">
+							<label style="font-size: 13px; color: #4ABA70;">Clickable Ads Section</label><br>
+							<a href="https://ooredoo.com.mm/portal/en/index">
+								<img src="../static/images/ads3.jpg" width="70%" height="70%" class="adsimg">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+		{% endblock %}

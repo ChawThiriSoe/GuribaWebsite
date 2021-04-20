@@ -1,0 +1,65 @@
+{% extends 'adminnavigation.html' %}
+{% block title %}
+Managing Story Data
+{% endblock %}
+{% block content %}
+	<div class="row" style="padding-top: 30px;">
+		<div class="col-md-1"></div>
+		{% if allstorydata %}
+			<div class="col-md-10">
+				<table class="table">
+					<tr>
+						<th style="color: #D91848; font-size: 15px;"><center>Story</center></th>
+						<th style="color: #D91848; font-size: 15px;"><center>Its chapters</center></th>
+						<th style="color: #D91848; font-size: 15px;"><center>Action</center></th>
+					</tr>
+					{% for story,chapter in allstorydata %}
+					<tr>
+						<td>
+							<center>
+								<p class="termp">
+									{{story.storytitle}}
+								</p>
+							</center>
+						</td>
+						<td></td>
+						<td>
+							<center>
+								<form action="/deletestory" method="post">
+									<input type="hidden" name="storyid" value={{story.storyID}}>
+									<button class="btn adminbtn" onclick="return confirm('Do you really want to unplish story?');">
+										Unpublish Story
+									</button>
+								</form>
+							</center>
+						</td>
+					</tr>
+					{% for data in chapter %}
+					<tr style="border: 1px solid #D91848;">
+						<td></td>
+						<td style="padding-left: 60px;">
+							<center>
+								<p class="termp">
+									{{data.chaptertitle}}
+								</p>
+							</center>
+						</td>
+						<td>
+							<center>
+								<form action="/deletechapter" method="post">
+									<input type="hidden" name="chapterid" value={{data.chapterID}}>
+									<button class="btn adminbutton" onclick="return confirm('Do you really want to unplish chapter?');">
+										Unpublish Chapter
+									</button>
+								</form>
+							</center>
+						</td>
+					</tr>
+					{% endfor %}
+					{% endfor %}
+				</table>
+			</div>
+		{% endif %}
+		<div class="col-md-1"></div>
+	</div>
+{% endblock %}

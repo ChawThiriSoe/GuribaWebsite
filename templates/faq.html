@@ -1,0 +1,129 @@
+{% extends 'usernavigation.html' %}
+{% block title %}
+Frequently Asked Questions 
+{% endblock %}
+{% block content %}
+	<div class="row" style="padding-top: 20px;">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-12 faqbox">
+					<div class="controlbox">
+						<h4>Do I make a registeration for an account?</h4>
+						<span class="toggle-info pull-left">
+							<i class="fa fa-plus"></i>
+						</span>
+					</div>
+					<div class="ansbox">
+						<p>
+							Even if you do not have an account, you can read the stories. But you will need to login with an account when you want to do many other options in Guriba. You can register for an account <a href="/userregister" style="color: #D91848;">here</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 faqbox">
+					<div class="controlbox">
+						<h4>Can I read stories offline (airplane mode)?</h4>
+						<span class="toggle-info pull-left">
+							<i class="fa fa-plus"></i>
+						</span>
+					</div>
+					<div class="ansbox">
+						<p>
+							We're so sorry about that. Offline mode cannot get at Guriba website. But we're planning to develop Guriba application. At that time, you will be able the offline mode. Untill now, stories can be read only with online mode.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 faqbox">
+					<div class="controlbox">
+						<h4>What makes Guriba different?</h4>
+						<span class="toggle-info pull-left">
+							<i class="fa fa-plus"></i>
+						</span>
+					</div>
+					<div class="ansbox">
+						<p>
+							We offers the needs of our writers and readers by providing you with various features. We always wait for your suggestions and feedback. When you give suggesions, we will review our features with the result of your suggestions. You can give your suggestions <a href="/contactus" style="color: #D91848;">here</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 faqbox">
+					<div class="controlbox">
+						<h4>How do I add new tags to my story?</h4>
+						<span class="toggle-info pull-left">
+							<i class="fa fa-plus"></i>
+						</span>
+					</div>
+					<div class="ansbox">
+						<p>
+							Before upload your story, you will be able to add and delete tags from there. After uploading, you will not be able to edit tags.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 faqbox">
+					<div class="controlbox">
+						<h4>Can I delete my account permanently?</h4>
+						<span class="toggle-info pull-left">
+							<i class="fa fa-plus"></i>
+						</span>
+					</div>
+					<div class="ansbox">
+						<p>
+							You can edit, update or correct your personal information at your profile. But you can do deleting your account yourself. You can request to us for delete <a href="/contactus" style="color: #D91848;">here</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 faqbox">
+					<div class="controlbox">
+						<h4>Can I write translation stories?</h4>
+						<span class="toggle-info pull-left">
+							<i class="fa fa-plus"></i>
+						</span>
+					</div>
+					<div class="ansbox">
+						<p>
+							Of Course, you can. But you have to give credit to original writer. If not, you will be in problem when original writer saw your story.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 faqbox">
+					<div class="controlbox">
+						<h4>For more question?</h4>
+						<span class="toggle-info pull-left">
+							<i class="fa fa-plus"></i>
+						</span>
+					</div>
+					<div class="ansbox">
+						<p>
+							You can ask more question to use from <a href="/contactus" style="color: #D91848;">here</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function () {
+		$(".ansbox").hide();
+		$(".controlbox").click(function () {
+			$(this).next(".ansbox").slideToggle().siblings(".ansbox").slideUp();
+			if ($("i").hasClass("fa-plus")) {
+				$(this).find("i").toggleClass("fa-minus");
+			
+			}
+	 	});
+	});
+	</script>
+{% endblock %}

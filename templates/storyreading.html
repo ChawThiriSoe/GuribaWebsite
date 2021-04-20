@@ -1,0 +1,193 @@
+{% extends 'usernavigation.html' %}
+{% block title %}
+{{chapterdata.chaptertitle}}
+{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="col-md-4" style="padding: 20px;">
+			<div class="dropdown1">
+				<button onclick="myFunction4()" class="dropbtn1">
+					<font style="font-size: 25px; color: #D91848;">
+						{{storydata.storytitle}}
+					</font>
+					<i class='fas fa-caret-down' style='font-size:14px'></i>
+				</button>
+				<div id="myDropdown4" class="dropdown-content4" style="height: 300px; overflow: auto;">
+					{% for chapter in allchapterdata %}
+						<form action="/storyreadinglist" method="post">
+							<input type="hidden" name="chapterid" value="{{chapter[0]}}">
+							<button class="likebutton tablelink"><a>{{chapter['chaptertitle']}}</a></button>
+						</form>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-10"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-2" style="padding:">
+			<center>
+				<img src="{{userdata.userimg}}" width="50px" height="50px" class="accimg">
+				<br>
+				<font class="previewtext">
+					<form action="/profile" method="post">
+						<input type="hidden" name="userid" value="{{userdata.userID}}">
+						By <button style="font-weight: bold;">{{userdata.username}}</button>
+					</form>
+				</font><br><br><br>
+				<font style="padding-right: 35px; color: #D91848; font-size: 17px; font-weight: bold;">
+					Share
+				</font><br><br>
+				<form action="/sharetofb" method="post">
+					<input type="hidden" name="chapterid" value="{{chapterdata.chapterID}}">
+					<button class="likebutton">
+						<i class="fa fa-facebook footi"></i>
+					</button><br>
+				</form>
+				<form action="/sharetoinsta" method="post">
+					<input type="hidden" name="chapterid" value="{{chapterdata.chapterID}}">
+					<button class="likebutton">
+						<i class="fa fa-instagram footi"></i>
+					</button><br>
+				</form>
+				<form action="/sharetotwt" method="post">
+					<input type="hidden" name="chapterid" value="{{chapterdata.chapterID}}">
+					<button class="likebutton">
+						<i class="fa fa-twitter footi"></i>
+					</button>
+				</form>
+			</center>
+		</div>
+		<!-- <div class="col-md-1"></div> -->
+		<div class="col-md-6">
+			{% if chapterdata.chapterimg %}
+			<div class="row" style="padding-bottom: 20px;">
+				<div class="col-md-12">
+					<img src="{{chapterdata.chapterimg}}" class="chapterimg">
+					<!-- <video width="320" height="240" controls>
+					  <source src="{{chapterdata.chapterimg}}" type="video/mp4">
+					  <source src="{{chapterdata.chapterimg}}" type="video/ogg">
+					</video> -->
+				</div>
+			</div>
+			{% endif %}
+			<div class="row" style="padding-bottom: 20px;">
+				<div class="col-md-12">
+					<center>
+						<font style="font-size: 25px; color: #D91848;">
+							{{chapterdata.chaptertitle}}
+						</font>
+					</center>
+				</div>
+			</div>
+			<div class="row" style="padding-bottom: 20px;">
+				<div class="col-md-12">
+					<p class="termp" align="justify">
+						{{chapterdata.chapterpara}}
+					</p>
+				</div>
+			</div>
+			<div class="row" style="padding-bottom: 30px;">
+				<div class="col-md-1"></div>
+				<div class="col-md-2">
+					<form action="/like" method="post">
+						<input type="hidden" name="chapterid" value="{{chapterdata.chapterID}}">
+						<button class="likebutton">
+							<i class="fa fa-thumbs-up" style="font-size:26px; color: #D91848;"></i>
+						</button>
+						<font style="font-size: 20px; color: #6E6565;">
+							{% if storydata.getlike == None %}
+							0
+							{% else %}
+							{{storydata.getlike}}
+							{% endif %}
+						</font>
+					</form>
+				</div>
+				<div class="col-md-2">
+					<form action="/unlike" method="post">
+						<input type="hidden" name="chapterid" value="{{chapterdata.chapterID}}">
+						<button class="likebutton">
+							<i class="fa fa-thumbs-down" style="font-size:26px; color: #D91848;"></i>
+						</button>
+						<font style="font-size: 20px; color: #6E6565;">
+							{% if storydata.getunlike == None %}
+							0
+							{% else %}
+							{{storydata.getunlike}}
+							{% endif %}
+						</font>
+					</form>
+				</div>
+				<div class="col-md-7"></div>
+			</div>
+			<div class="row" style="padding-bottom: 20px;">
+				<div class="col-md-1"></div>
+				<div class="col-md-3">
+					<div style="padding: 30px;">
+						<img src="{{session['userimg']}}" width="50px" height="50px" class="accimg">
+						<font class="previewtext">
+							<form action="/profile" method="post">
+								<input type="hidden" name="userid" value="{{session['userID']}}">
+								<button style="font-weight: bold;">{{session['username']}}</button>
+							</form>
+						</font>
+					</div>
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-6">
+					<form action="/comment" method="post">
+						<div class="row">
+							<div class="col-md-12">
+								<input type="hidden" name="storyid" value="{{storydata.storyID}}">
+								<input type="hidden" name="userid" value="{{session['userID']}}">
+								<input type="hidden" name="chapterid" value="{{chapterdata.chapterID}}">
+								<textarea name="comment" rows="3" class="fbinput" placeholder="Enter your thought..."></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-8"></div>
+							<div class="col-md-2">
+								<input type="submit" value="Send" class="comment">
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+			{% for comment in commentdata %}
+				<div class="row" style="padding-bottom: 20px;">
+					<div class="col-md-2"></div>
+					<div class="col-md-1">
+						<img src="{{comment.userimg}}" width="50px" height="50px" class="accimg">
+					</div>
+					<div class="col-md-8">
+						<font class="previewtext">
+							<form action="/profile" method="post">
+								<input type="hidden" name="userid" value="{{comment.userID}}">
+								<button style="padding: 10px; font-weight: bold;">{{comment.username}}</button>
+							</form>
+						</font>
+						<form class="termp">
+							{{comment.comment}}
+						</form>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="col-md-1"></div>
+		<div class="col-md-3">
+			<label style="font-size: 13px; color: #4ABA70; padding-top: 200px;">Clickable Ads Section</label><br>
+			<a href="https://mytel.com.mm/">
+				<img src="../static/images/ads8.jpg" width="90%" height="600px" class="adsimg">
+			</a>
+		</div>
+	</div>
+<script>
+function myFunction4() {
+  document.getElementById("myDropdown4").classList.toggle("show1");
+}
+</script>
+{% endblock %}

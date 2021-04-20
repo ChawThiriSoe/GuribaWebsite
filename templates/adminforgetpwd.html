@@ -1,0 +1,39 @@
+{% extends 'usernavigation.html' %}
+{% block title %}
+Do you forget your password?
+{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<center>
+				<font style="font-size: 30px; font-weight: 600; color: #D91848;">
+					Do you forget your password?
+				</font>
+			</center>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+	<form action="/adminforgetpwd" method="post">
+		<div class="row" style="padding: 40px;">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<div class="form-group">
+					{% if msg %}
+						<div class="form-group">
+							<span style="color: #D91848; font-size: 12px;">{{msg}}</span>
+						</div>
+					{% endif %}
+				</div>
+				<font class="fbfont">
+					Enter your email address:
+				</font>
+				<br><br>
+				<input type="email" name="adminemail" class="fbinput" value="">
+				<br><br>
+				<input type="submit" value="Check" class="fbsubmit">
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</form>
+{% endblock %}

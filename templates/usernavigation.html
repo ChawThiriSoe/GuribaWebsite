@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		{% block title %}
+
+		{% endblock %}
+	</title>
+
+	<!-- Essential Script and Link -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<!-- Essential Scrip and link -->
+
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+	<!-- For login & register forms -->
+	<link rel="stylesheet" type="text/css" href="../static/css/login.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/register.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda+One">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<!-- For login & register forms -->
+
+	<!-- For search function -->
+	<link rel="stylesheet" type="text/css" href="../static/css/search.css">
+
+	<!-- For style -->
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+	<!-- For faq -->
+	<link rel="stylesheet" type="text/css" href="../static/css/faq.css">
+
+	<!-- For Addimg -->
+	<link rel="stylesheet" type="text/css" href="../static/css/addimg.css">
+	
+</head>
+<body>
+	<!-- Nav start -->
+	<!-- Modified from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_filter -->
+	<div class="container-fluid">
+		<div class="row" style="margin-top: 20px;">
+			<div class="col-md-1">
+				<a href="/userindex">
+					<img src="../static/images/logo3.png" width="90px" height="70px">
+				</a>
+			</div>
+			<div class="col-md-2">
+				<div class="dropdown">
+					<button onclick="myFunction1()" class="dropbtn">
+						Browse Stories 
+						<i class='fas fa-caret-down' style='font-size:14px'></i>
+					</button>
+					<div id="myDropdown1" class="dropdown-content">
+						<div class="row">
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="Adventure">
+									<button class="likebutton" >
+										<a>Adventure</a>
+									</button>
+								</form>
+							</div>
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="Humor">
+									<button class="likebutton" >
+										<a>Humor</a>
+									</button>
+								</form>
+							</div>
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="Horror">
+									<button class="likebutton" >
+										<a>Horror</a>
+									</button>
+								</form>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="Fantasy">
+									<button class="likebutton" >
+										<a>Fantasy</a>
+									</button>
+								</form>
+							</div>
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="Romance">
+									<button class="likebutton" >
+										<a>Romance</a>
+									</button>
+								</form>
+							</div>
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="Mystery">
+									<button class="likebutton" >
+										<a>Mystery</a>
+									</button>
+								</form>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="FanFiction">
+									<button class="likebutton" >
+										<a>FanFiction</a>
+									</button>
+								</form>
+							</div>
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="Non-Fiction">
+									<button class="likebutton" >
+										<a>Non-Fiction</a>
+									</button>
+								</form>
+							</div>
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="Teen Fiction">
+									<button class="likebutton" >
+										<a>Teen Fiction</a>
+									</button>
+								</form>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="Poetry">
+									<button class="likebutton" >
+										<a>Poetry</a>
+									</button>
+								</form>
+							</div>
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="Short Story">
+									<button class="likebutton" >
+										<a>Short Stories</a>
+									</button>
+								</form>
+							</div>
+							<div class="col-md-4">
+								<form action="/searchgenre" method="post">
+									<input type="hidden" name="genrename" value="Long Story">
+									<button class="likebutton" >
+										<a>Long Stories</a>
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<form action="/search" method="post">
+					<input type="text" name="search" placeholder="Search..." id="myInput">
+					<button type="submit" class="likebutton">
+						<i class='fas fa-search' style='font-size:14px; color: #D91848;'></i>
+					</button>
+				</form>
+			</div>
+			<div class="col-md-2">
+				<div class="dropdown">
+					<button onclick="myFunction2()" class="dropbtn">
+						Start Writing
+						<i class='fas fa-caret-down' style='font-size:14px'></i>
+					</button>
+					<div id="myDropdown2" class="dropdown-content2">
+						<a href="/introwriting">Create a new story</a>
+						<a href="/mystory">My stories</a>
+					</div>
+				</div>
+			</div>
+			{% if 'username' in session %}
+				<div class="col-md-2">
+					<div class="dropdown">
+						<button onclick="myFunction3()" class="dropbtn">
+							{{session['username']}}
+							<i class='fas fa-caret-down' style='font-size:14px'></i>
+						</button>
+						<div id="myDropdown3" class="dropdown-content3">
+							<a href="/myprofile">My Profile</a>
+							<a href="/userlogout">Log out</a>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<div class="col-md-1" style="margin-top: 20px;">
+					<a href="/userlogin" class="droplink">Login</a>
+				</div>
+				<div class="col-md-2" style="margin-top: 20px;">
+					<a href="/userregister" class="droplink">Register</a>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+	<!-- Nav end -->
+	<div class="container-fluid">
+		{% block content %}
+
+		{% endblock %}
+	</div>
+	<!-- Footer start -->
+	<hr class="hrline">
+	<div class="container-fluid">
+		<div class="row foot1">
+			<div class="col-md-2 subfoot">
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="Humor">
+					<button class="likebutton foota" >
+						<a>Humor</a>
+					</button>
+				</form>
+				<br><br>
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="Adventure">
+					<button class="likebutton foota" >
+						<a>Adventure</a>
+					</button>
+				</form>
+				<br><br>
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="Horror">
+					<button class="likebutton foota" >
+						<a>Horror</a>
+					</button>
+				</form>
+				<br><br>
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="Fantasy">
+					<button class="likebutton foota" >
+						<a>Fantasy</a>
+					</button>
+				</form>
+			</div>
+			<div class="col-md-2 subfoot">
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="Romance">
+					<button class="likebutton foota" >
+						<a>Romance</a>
+					</button>
+				</form>
+				<br><br>
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="Teen Fiction">
+					<button class="likebutton foota" >
+						<a>Teen Fiction</a>
+					</button>
+				</form>
+				<br><br>
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="FanFiction">
+					<button class="likebutton foota" >
+						<a>FanFiction</a>
+					</button>
+				</form>
+				<br><br>
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="Non-Fiction">
+					<button class="likebutton foota" >
+						<a>Non-Fiction</a>
+					</button>
+				</form>
+			</div>
+			<div class="col-md-2 subfoot">
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="Poetry">
+					<button class="likebutton foota" >
+						<a>Poetry</a>
+					</button>
+				</form>
+				<br><br>
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="Short Story">
+					<button class="likebutton foota" >
+						<a>Short Stories</a>
+					</button>
+				</form>
+				<br><br>
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="Long Story">
+					<button class="likebutton foota" >
+						<a>Long Stories</a>
+					</button>
+				</form>
+				<br><br>
+				<form action="/searchgenre" method="post">
+					<input type="hidden" name="genrename" value="Mystery">
+					<button class="likebutton foota" >
+						<a>Mystery</a>
+					</button>
+				</form>
+			</div>
+			<div class="col-md-2 subfoot">
+				<a href="/userindex">
+					<img src="../static/images/logo3.png" width="90px" height="70px">
+				</a>
+			</div>
+			<div class="col-md-2 subfoot">
+				<a href="/aboutus" class="foota">About Us</a>
+				<br><br>
+				<a href="/contactus" class="foota">Contact Us</a>
+				<br><br>
+				<a href="/faq" class="foota">FAQ</a>
+			</div>
+			<div class="col-md-2 subfoot">
+				<a href="/term&condition" class="foota">Term & condition</a>
+				<br><br>
+				<a href="/privacy" class="foota">Privacy</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8"></div>
+			<div class="col-md-4">
+				<div class="row">
+					<div class="col-md-2">
+						<a href="https://www.facebook.com/">
+							<i class="fa fa-facebook footi"></i>
+						</a>
+					</div>
+					<div class="col-md-2">
+						<a href="https://www.instagram.com/">
+							<i class="fa fa-instagram footi"></i>
+						</a>
+					</div>
+					<div class="col-md-2">
+						<a href="https://twitter.com/?lang=en">
+							<i class="fa fa-twitter footi"></i>
+						</a>
+					</div>
+					<div class="col-md-2">
+						<a href="https://www.linkedin.com/">
+							<i class="fa fa-linkedin footi"></i>
+						</a>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="background-color: #6E6565">
+			<div class="col-md-12">
+				<center>
+					<font color="99E1D9">&#169; 2020 Guriba. All right reserved.</font>
+				</center>
+			</div>
+		</div>
+	</div>
+	<!-- Footer end -->
+
+<script>
+function myFunction1() {
+  document.getElementById("myDropdown1").classList.toggle("show");
+}
+function myFunction2() {
+  document.getElementById("myDropdown2").classList.toggle("show");
+}
+function myFunction3() {
+  document.getElementById("myDropdown3").classList.toggle("show");
+}
+</script>
+</body>
+</html>

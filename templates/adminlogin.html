@@ -1,0 +1,29 @@
+{% extends 'adminnavigation.html' %}
+{% block title %}
+Login Form for Administration
+{% endblock %}
+{% block content %}
+<!-- Modified template from https://www.tutorialrepublic.com/snippets/preview.php?topic=bootstrap&file=elegant-account-login-form-with-avatar-icon -->
+			<div class="login-form">    
+			    <form action="/adminlogin" method="post">
+					<div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
+			    	<h4 class="modal-title">Login to Your Account</h4>
+			        <div class="form-group">
+			            <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
+			        </div>
+			        <div class="form-group">
+			            <input type="password" class="form-control" name="userpwd" placeholder="Enter password" required>
+			        </div>
+			        {% if msg %}
+				        <div class="form-group">
+				            <span style="color: #D91848; font-size: 12px;">{{msg}}</span>
+				        </div>
+					{% endif %}
+			        <div class="form-group small clearfix">
+			            <a href="/adminforgetpwd" class="forgot-link">Forgot Password?</a>
+			        </div> 
+			        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">              
+			    </form>			
+			    <div class="text-center small">Don't have an account? <a href="/adminregister">Sign up</a></div>
+			</div>
+{% endblock %}

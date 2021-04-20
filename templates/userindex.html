@@ -1,0 +1,107 @@
+{% extends 'usernavigation.html' %}
+{% block title %}
+Welcome from Guriba
+{% endblock %}
+{% block content %}
+	<div class="row" style="padding: 20px;">
+		<div class="col-md-3"></div>
+		<div class="col-md-7">
+			<h1 style="color: #D91848;">Welcome back, {{session['username']}}</h1>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row" style="padding: 20px;">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<h2 style="font-weight: 700; color: #D91848;">Editor's Pick</h2>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				{% for data in allstorydata[0] %}
+				<div class="col-md-2" style="padding: 10px;">
+					<form action="/storypreview" method="post">
+						<input type="hidden" name="storyid" value="{{data.storyID}}">
+						<input type="image" src="{{data.storyimg}}" width="100%" height="100%" style="padding-bottom: 10px;" class="listimg storyimg">
+					</form>
+					<form action="/searchtag" method="post">
+						<input type="hidden" name="tagname" value="{{data.tagtype}}">
+						<button class="likebutton storytag" >
+							<a>{{data.tagtype}}</a>
+						</button>
+					</form>
+				</div>
+				{% endfor %}
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				{% for data in allstorydata[1] %}
+				<div class="col-md-2" style="padding: 10px;">
+					<form action="/storypreview" method="post">
+						<input type="hidden" name="storyid" value="{{data.storyID}}">
+						<input type="image" src="{{data.storyimg}}" width="100%" height="100%" style="padding-bottom: 10px;" class="listimg storyimg">
+					</form>
+					<form action="/searchtag" method="post">
+						<input type="hidden" name="tagname" value="{{data.tagtype}}">
+						<button class="likebutton storytag" >
+							<a>{{data.tagtype}}</a>
+						</button>
+					</form>
+				</div>
+				{% endfor %}
+				<div class="col-md-2"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row" style="padding: 20px;">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<h2 style="font-weight: 700; color: #D91848;">You May Like</h2>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				{% for data in allstorydata[2] %}
+				<div class="col-md-2" style="padding: 10px;">
+					<form action="/storypreview" method="post">
+						<input type="hidden" name="storyid" value="{{data.storyID}}">
+						<input type="image" src="{{data.storyimg}}" width="100%" height="100%" style="padding-bottom: 10px;" class="listimg storyimg">
+					</form>
+					<form action="/searchtag" method="post">
+						<input type="hidden" name="tagname" value="{{data.tagtype}}">
+						<button class="likebutton storytag" >
+							<a>{{data.tagtype}}</a>
+						</button>
+					</form>
+				</div>
+				{% endfor %}
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				{% for data in allstorydata[3] %}
+				<div class="col-md-2" style="padding: 10px;">
+					<form action="/storypreview" method="post">
+						<input type="hidden" name="storyid" value="{{data.storyID}}">
+						<input type="image" src="{{data.storyimg}}" width="100%" height="100%" style="padding-bottom: 10px;" class="listimg storyimg">
+					</form>
+					<form action="/searchtag" method="post">
+						<input type="hidden" name="tagname" value="{{data.tagtype}}">
+						<button class="likebutton storytag" >
+							<a>{{data.tagtype}}</a>
+						</button>
+					</form>
+				</div>
+				{% endfor %}
+				<div class="col-md-2"></div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

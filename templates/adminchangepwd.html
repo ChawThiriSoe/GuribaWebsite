@@ -1,0 +1,51 @@
+{% extends 'usernavigation.html' %}
+{% block title %}
+Resetting password
+{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<center>
+				<font style="font-size: 30px; font-weight: 600; color: #D91848;">
+					Resetting New Password
+				</font>
+			</center>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+	<form action="/adminchgpwd" method="post">
+		<div class="row" style="padding: 40px;">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<div class="form-group">
+					{% if msg %}
+						<div class="form-group">
+							<span style="color: #D91848; font-size: 12px;">{{msg}}</span>
+						</div>
+					{% endif %}
+				</div>
+				<font class="fbfont">
+					Enter new password:
+				</font>
+				<br><br>
+				<input type="hidden" name="adminid" class="fbinput" value="
+				{% if id %}
+				{{id}}
+				{% else %}
+				{{admindata.adminID}}
+				{% endif %}">
+				<input type="password" name="adminpwd" class="fbinput" value="">
+				<br><br>
+				<font class="fbfont">
+					Confirm new password:
+				</font>
+				<br><br>
+				<input type="password" name="confirmpwd" class="fbinput" value="">
+				<br><br>
+				<input type="submit" value="Confirm" class="fbsubmit">
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</form>
+{% endblock %}

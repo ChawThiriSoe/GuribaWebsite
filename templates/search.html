@@ -1,0 +1,110 @@
+{% extends 'usernavigation.html' %}
+{% block title %}
+Searching Result
+{% endblock %}
+{% block content %}
+	<div class="row" style="padding: 20px;">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<font style="font-size: 25px; color: #D91848;">
+				Search For {{text}}
+			</font>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="row storylist">
+				<div class="col-md-12">
+					<div class="row" style="padding-bottom: 30px;">
+						<div class="col-md-2"></div>
+						<div class="col-md-10">
+							<font style="font-size: 15px; color: #6E6565;">
+								{{totalstory}} Stories found
+							</font>
+						</div>
+					</div>
+					{% if matchstorydata %}
+					{% for story in matchstorydata %}
+					{% for line in story %}
+					<div class="row" style="padding-bottom: 30px;">
+						<div class="col-md-4">
+							<img src="{{line.storyimg}}" width="90%" height="80%" class="listimg">
+						</div>
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-12">
+									<form action="/storypreview" method="post">
+										<input type="hidden" name="storyid" value="{{line.storyID}}">
+										<button class="likebutton" style="font-size: 25px; color: #D91848; background-color: white;">{{line.storytitle}}</button>
+									</form>
+								</div>
+							</div>
+							<div class="row" style="padding-top: 20px;">
+								<div class="col-md-12">
+									<font style="font-size: 15px;">
+										Finished Chapters - {{line.totalchapter}}
+									</font>
+								</div>
+							</div>
+							<div class="row" style="padding-top: 20px;">
+								<div class="col-md-12">
+									<font style="font-size: 15px;">
+										Genres - {{line.genretype}}
+									</font>
+								</div>
+							</div>
+							<div class="row" style="padding-top: 20px;">
+								<div class="col-md-12">
+									<p style="font-size: 15px;">
+										{{line.storyintro}}
+									</p>
+								</div>
+							</div>
+							<div class="row" style="padding-top: 30px;">
+								<div class="col-md-12">
+									<font class="tags">{{line.tagtype}}</font>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="row storylist">
+				<div class="col-md-12">
+					<div class="row" style="padding-bottom: 30px;">
+						<div class="col-md-1"></div>
+						<div class="col-md-11">
+							<font style="font-size: 15px; color: #6E6565;">
+								{{totaluser}} Profiles found
+							</font>
+						</div>
+					</div>
+					{% if matchuserdata %}
+					{% for user in matchuserdata %}
+					<div class="row" style="padding-bottom: 30px;">
+						<div class="col-md-3">
+							<img src="{{user.userimg}}" width="50px" height="50px" class="accimg">
+						</div>
+						<div class="col-md-7">
+							<div style="padding-top: 9px;">
+								<font class="previewtext">
+									<form action="/profile" method="post">
+										<input type="hidden" name="userid" value="{{user.userID}}">
+										<button style="font-weight: bold; background-color: white;">{{user.username}}</button>
+									</form>
+								</font>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

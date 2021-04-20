@@ -1,0 +1,148 @@
+{% extends 'usernavigation.html' %}
+{% block title %}
+{{storydata.storytitle}}
+{% endblock %}
+{% block content %}
+	<div class="row" style="padding: 30px;">
+		<div class="col-md-1"></div>
+		<div class="col-md-2">
+			<img src="{{storydata.storyimg}}" width="100%" height="100%" class="storyimg">
+		</div>
+		<div class="col-md-1"></div>
+		<div class="col-md-5">
+			<div class="row" style="padding: 20px;">
+				<div class="col-md-12">
+					<font style="font-size: 25px; color: #D91848;">
+						{{storydata.storytitle}}
+					</font>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3" style="padding-left: 40px;">
+					<center>
+				<img src="{{userdata.userimg}}" width="50px" height="50px" class="accimg">
+					</center>
+				</div>
+				<div class="col-md-9">
+					<font class="previewtext">
+						<form action="/profile" method="post">
+							<input type="hidden" name="userid" value="{{userdata.userID}}">
+							By <button style="font-weight: bold;">{{userdata.username}}</button>
+						</form>
+					</font>
+				</div>
+			</div>
+			<div class="row" style="padding-bottom: 30px;">
+				<div class="col-md-3"></div>
+				<div class="col-md-9">
+					<font style="font-size: 15px; color: #6E6565;">
+						Updated at {{storydata.uploaddate}}
+					</font>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-3">
+					<font style="font-size: 15px; color: #6E6565;">
+						{{storydata.totalchapter}} Chapter
+					</font>
+				</div>
+				<div class="col-md-3">
+					<font style="font-size: 15px; color: #6E6565;">
+						{% if storydata.getlike == None %}
+						0 Likes
+						{% else %}
+						{{storydata.getlike}} Likes
+						{% endif %}
+					</font>
+				</div>
+				<div class="col-md-3">
+					<font style="font-size: 15px; color: #6E6565;">
+						{% if storydata.getsharing == None %}
+						0 Shares
+						{% else %}
+						{{storydata.getsharing}} Shares
+						{% endif %}
+					</font>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+	{% if msg %}
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-11">
+				<div class="form-group">
+					<span style="color: #D91848; font-size: 12px;">{{msg}}</span>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-2">
+			<form action="/storyreading" method="post">
+				<input type="hidden" name="storyid" value="{{storydata.storyID}}">
+				<button class="readbtn">Read</button>
+			</form>
+		</div>
+		<div class="col-md-3">
+			<form action="/addtolibrary" method="post">
+				<input type="hidden" name="storyid" value="{{storydata.storyID}}">
+				<input type="hidden" name="userid" value="{{session['userID']}}">
+				<button class="readbtn" style="margin-left: 30px;">Add to Library</button>
+			</form>
+		</div>
+		<div class="col-md-4">
+			<form action="/addtoreadinglist" method="post">
+				<input type="hidden" name="storyid" value="{{storydata.storyID}}">
+				<input type="hidden" name="userid" value="{{session['userID']}}">
+				<button class="readbtn" style="margin-left: 30px;">Add to Reading List</button>
+			</form>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	<div class="row" style="padding: 30px;">
+		<div class="col-md-1"></div>
+		<div class="col-md-5">
+			<p style="font-size: 15px;" align="justify">
+				{{storydata.storyintro}}
+				<br><br>
+				<button class="tags">{{tagdata.tagtype}}</button>
+			</p>
+		</div>
+		<div class="col-md-6"></div>
+		<div class="col-md-4"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-5">
+			<table class="table">
+				<tr style="font-size: 20px; font-weight: bold; color: #D91848;">
+					<td>Table of Contents</td>
+				</tr>
+				{% for chapter in chapterdata%}
+				<tr style="padding: 20px;">
+					<td>
+						<form action="/storyreadinglist" method="post">
+							<input type="hidden" name="chapterid" value="{{chapter[0]}}">
+							<button class="likebutton tablelink">{{chapter[1]}}</button>
+						</form>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="col-md-6"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-8"></div>
+		<div class="col-md-4">
+			<label style="font-size: 13px; color: #4ABA70;">Clickable Ads Section</label><br>
+			<a href="https://mytel.com.mm/">
+				<img src="../static/images/ads5.jpg" width="90%" height="90%" class="adsimg">
+			</a>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'adminnavigation.html' %}
+{% block title %}
+Guriba website's Management Centre
+{% endblock %}
+{% block content %}
+	<div class="row" style="padding: 30px;">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<font style="font-size: 30px; font-weight: 600; color: #D91848;">
+				Welcome From Management site of Guriba
+			</font>
+			<br>
+			<p class="termp">
+				You can go different kinds of management pages from the following links.
+			</p>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	<div class="row" style="padding: 30px;">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<a href="/manageuser" class="managelinks">
+				(1) Manage User Data
+			</a><br><br>
+			<a href="/manageadmin" class="managelinks">
+				(2) Manage Admin Data
+			</a><br><br>
+			<a href="/managestory" class="managelinks">
+				(3) Manage Story Data
+			</a><br><br>
+			<a href="/managereport" class="managelinks">
+				(4) Manage Report Data
+			</a><br><br>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+{% endblock %}
+{% block style%}
+position: fixed; left: 0; bottom: 0;
+{% endblock %}

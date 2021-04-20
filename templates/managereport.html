@@ -1,0 +1,51 @@
+{% extends 'adminnavigation.html' %}
+{% block title %}
+Managing Report Data
+{% endblock %}
+{% block content %}
+	<div class="row" style="padding-top: 30px;">
+		<div class="col-md-1"></div>
+		{% if reportdata %}
+			<div class="col-md-10">
+				<table class="table">
+					<tr>
+						<th style="color: #D91848; font-size: 15px;"><center>Email & Report</center></th>
+						<th style="color: #D91848; font-size: 15px;"><center>Status</center></th>
+						<th style="color: #D91848; font-size: 15px;"><center>Action</center></th>
+					</tr>
+					{% for rows in reportdata %}
+					<tr>
+						<td>
+							<p class="termp">
+								Email:&emsp;{{rows[1]}}<br><br>
+								Topic:&emsp;{{rows[2]}}<br><br>
+								Message:&emsp;{{rows[3]}}
+							</p>
+						</td>
+						<td>
+							<p class="termp">
+								{{rows[4]}}
+							</p>
+						</td>
+						<td>
+							<center>
+								<form action="/managereport" method="post">
+									<input type="hidden" name="id" value={{rows[0]}}>
+									<input type="hidden" name="adminid" value={{session['adminid']}}>
+									<button class="btn adminbtn" onclick="return confirm('Did you read this report?');"
+									{% if rows[4] == 'Scrutinized' %}
+									disabled
+									{% endif %} >
+										Scrutinize
+									</button>
+								</form>
+							</center>
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+		{% endif %}
+		<div class="col-md-1"></div>
+	</div>
+{% endblock %}

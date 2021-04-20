@@ -1,0 +1,34 @@
+.faqbox {
+	padding: 10px 0 10px;	
+}
+
+.faqbox .controlbox {
+	background: #99E1D9;
+    color: #21211F;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.faqbox .controlbox h4 {
+	float: left;
+	padding-left: 29px;
+	padding-top: 20px;
+	text-align: center;
+}
+
+.faqbox .controlbox span{
+	float: right !important;
+    padding-right: 29px;
+    line-height: 65px;
+    font-size: 12px;
+}
+
+
+.ansbox{
+    background: #F5F5F5;
+    padding: 20px 30px 10px 30px;
+    text-align: justify;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #21211F;
+}

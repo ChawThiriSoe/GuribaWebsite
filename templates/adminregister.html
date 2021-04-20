@@ -1,0 +1,42 @@
+{% extends 'adminnavigation.html' %}
+{% block title %}
+Registeration Form for Administration
+{% endblock %}
+{% block content %}
+<!-- Modified template from https://www.tutorialrepublic.com/snippets/preview.php?topic=bootstrap&file=simple-registration-form -->
+<div class="signup-form">
+			    <form action="/adminregister" method="post">
+			    	<div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
+					<h2>Register</h2>
+					<p class="hint-text">Create your account. It's free and only takes a minute.</p>
+			        {% if msg %}
+				        <div class="form-group">
+				            <span style="color: #D91848; font-size: 12px;">{{msg}}</span>
+				        </div>
+					{% endif %}
+			        <div class="form-group">
+			        	<input type="text" class="form-control" name="username" placeholder="Your Nickname" value="{{uname}}" required>
+			        </div>
+			        <div class="form-group">
+			        	<input type="date" class="form-control" name="userdob" placeholder="Your date of birth" value="{{dob}}"required>
+			        </div>
+					<div class="form-group">
+			            <input type="password" class="form-control" name="userpwd" placeholder="Password" required>
+			        </div>
+					<div class="form-group">
+			            <input type="password" class="form-control" name="confirm_pwd" placeholder="Confirm Password" required>
+			        </div>
+			        <div class="form-group">
+			        	<input type="email" class="form-control" name="useremail" placeholder="Recovery Email" value="{{uemail}}" required>
+			        </div>
+			        <div class="form-group" style="font-size: 12px">
+						<label class="form-check-label"><input type="checkbox" required> I accept the <a href="/term&condition">Terms of Use</a> &amp; <a href="/privacy">Privacy Policy</a> for Guriba.</label>
+						<label class="form-check-label"><input type="checkbox" required> You must be at least 18 years old to join. </label>
+					</div>
+					<div class="form-group">
+			            <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+			        </div>
+			    </form>
+				<div class="text-center">Already have an account? <a href="/adminlogin" style="color: #4ABA70; text-decoration: none;">Sign in</a></div>
+			</div>
+{% endblock %}
